@@ -1,0 +1,89 @@
+# Cursor Rules – Bài Tập Online Cơ Học Đất
+# TS. Phạm Việt Anh · Bộ môn Địa Kĩ Thuật · ĐHXD Hà Nội
+
+## Cấu trúc dự án
+```
+Baitap_CHD/
+├── index.html          ← Framework UI (ít sửa)
+├── engine.js           ← Logic engine (KHÔNG SỬA)
+├── config.js           ← Cấu hình chương (sửa khi thêm chương)
+└── exercises/
+    ├── ch3.js          ← Bài tập Chương 3
+    ├── ch4.js          ← Bài tập Chương 4
+    ├── ch5.js          ← Bài tập Chương 5
+    └── ch6.js          ← Bài tập Chương 6
+```
+
+## QUAN TRỌNG – Quy tắc khi chỉnh sửa
+
+1. KHÔNG bao giờ sửa engine.js
+2. KHÔNG sửa phần CSS và HTML skeleton trong index.html
+3. Khi thêm chương mới → chỉ sửa config.js
+4. Khi thêm bài tập → chỉ sửa file ch?.js tương ứng
+5. Khi thêm chương mới cần tạo file ch?.js mới
+
+## Cấu trúc 1 bài tập (object trong EXERCISES)
+
+```javascript
+EXERCISES['ch3_b1'] = {
+  chapterId: 'ch3',         // phải khớp với id trong config.js
+  title:     'Tên bài',
+  type:      'guided',      // 'guided' = có lý thuyết | 'apply' = chỉ bài tập
+
+  theory: {                 // BỎ QUA nếu type = 'apply'
+    url:     'https://drive.google.com/uc?export=view&id=FILE_ID',
+    caption: 'Chú thích ảnh'
+  },
+
+  hint: `HTML string gợi ý công thức`,
+
+  dataTable(d) {            // BỎ QUA nếu không có bảng số liệu
+    return [
+      { param:'Tên thông số', sym:'Kí hiệu', val: d.value, unit:'đơn vị' },
+    ];
+  },
+
+  genData(rng) {
+    // rng() trả về số ngẫu nhiên [0, 1)
+    // r2(v) = làm tròn 2 chữ số thập phân
+    // r3(v) = làm tròn 3 chữ số thập phân
+    return { /* các giá trị số liệu */ };
+  },
+
+  statement(d) {
+    return `HTML string đề bài, dùng ${d.variable} để chèn số liệu`;
+  },
+
+  questions: [
+    // FILL-IN:
+    { id:'q1', type:'fill',
+      label:'Nhãn câu hỏi =', unit:'đơn vị',
+      answer: d => d.dapAn,   // hàm trả về đáp án đúng
+      tol: 0.05               // sai số chấp nhận
+    },
+
+    // MCQ:
+    { id:'q2', type:'mcq',
+      label:'Câu hỏi trắc nghiệm:',
+      choices: d => ['A. ...', 'B. ...', 'C. ...', 'D. ...'],
+      correctIndex: d => 2    // 0-based index đáp án đúng
+    },
+  ]
+};
+```
+
+## Quy ước đặt tên
+- Chapter ID: ch3, ch4, ch5, ch6, ch7...
+- Exercise ID: ch3_b1, ch3_b2, ch3_b3...
+- Question ID: q1, q2, q3... (trong cùng 1 bài)
+
+## Các hàm helper có sẵn (dùng trong genData)
+- r2(v)       → làm tròn 2 chữ số
+- r3(v)       → làm tròn 3 chữ số
+- rng()       → số ngẫu nhiên [0, 1) — LUÔN dùng rng(), không dùng Math.random()
+
+## Khi được yêu cầu thêm bài tập
+1. Chỉ mở file ch?.js tương ứng
+2. Copy object mẫu ở trên
+3. Điền nội dung
+4. KHÔNG đụng vào file khác
