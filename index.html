@@ -432,7 +432,7 @@ footer{text-align:center;font-size:.73rem;color:var(--muted);padding:18px;border
           </div>
           <div class="field" style="margin-bottom:14px;">
             <label>Tên giảng viên / Môn học (hiện trên header)</label>
-            <input type="text" id="setting-teacher" placeholder="GV Lê Thị Ngọc Hà – Cơ Học Đất" />
+            <input type="text" id="setting-teacher" placeholder="Học Phần – Cơ Học Đất" />
           </div>
           <div class="field" style="margin-bottom:16px;">
             <label>Đổi mật khẩu Admin</label>
@@ -452,7 +452,7 @@ footer{text-align:center;font-size:.73rem;color:var(--muted);padding:18px;border
   <div class="header-top">
     <div class="header-logo">
       <h1>Cơ Học Đất – Bài Tập Online</h1>
-      <p id="site-sub">GV Lê Thị Ngọc Hà · Bộ môn Cơ học đất - Nền móng · ĐHXD Hà Nội</p>
+      <p id="site-sub"> · Bộ môn Cơ học đất - Nền móng · ĐHXD Hà Nội</p>
     </div>
     <div id="timer-badge">00:00</div>
     <button class="btn-admin-toggle" onclick="ADMIN.open()">⚙ Admin</button>
@@ -613,15 +613,29 @@ const TIMER = {
 const CFG_KEY = 'chd_config';
 const DEFAULT_CFG = {
   gasUrl:      '',
-  teacher:     'GV Lê Thị Ngọc Hà · Bộ môn Cơ học đất - Nền móng · ĐHXD Hà Nội',
+  teacher:     ' · Bộ môn Cơ học đất - Nền móng · ĐHXD Hà Nội',
   adminPw:     'admin123',
   showFeedback: false,   // ← mặc định TẮT đúng/sai real-time
   showScore:    true,    // ← mặc định HIỆN điểm sau nộp
   classes: [
     { id:'69XDC1', name:'Lớp 69XDC1' },
     { id:'69XDC2', name:'Lớp 69XDC2' },
+    { id:'69XDC3', name:'Lớp 69XDC3' },
+    { id:'69XDC4', name:'Lớp 69XDC4' },
+    { id:'69XDC5', name:'Lớp 69XDC5' },
+    { id:'69XDC6', name:'Lớp 69XDC6' },
+    { id:'69XD1', name:'Lớp 69XD1' },
+    { id:'69XD2', name:'Lớp 69XD2' },
+    { id:'69XD3', name:'Lớp 69XD3' },
+    { id:'69XD4', name:'Lớp 69XD4' },
+    { id:'69XD5', name:'Lớp 69XD5' },
+    { id:'69XD6', name:'Lớp 69XD6' },
+    { id:'69XD7', name:'Lớp 69XD7' },
+    { id:'69XD8', name:'Lớp 69XD8' },
+        
   ],
   schedule: {
+    ch1: { open:null, close:null, minPct:80, active:true  },
     ch2: { open:null, close:null, minPct:80, active:true  },
     ch3: { open:null, close:null, minPct:80, active:true  },
     ch4: { open:null, close:null, minPct:80, active:true },
